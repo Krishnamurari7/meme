@@ -1,90 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css';
-import { motion } from 'motion/react';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MemeExplorer from "./pages/MemeExplorer";
+import MemeUpload from "./pages/MemeUpload";
+import MemeDetails from "./pages/MemeDetails";
+import Profile from "./pages/Profile";
+import Leaderboard from "./pages/Leaderboard";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+export default function App() {
   return (
-    <>
-      <motion.h1
-      initial = {{
-        x: 0
-      }}
-      animate = {{
-        scale: 1.5,
-        x: 1000
-
-      }}
-      >
-      Hello
-      </motion.h1>
-      <motion.div 
-      className='box'
-      animate = {{
-        x: [0, 1000, 1000, 0 ,0],
-        y: [0, 0, 500, 500, 0],
-        // scale: 0.5,
-        rotate: 360
-
-      }}
-      transition={{
-        duration: 2,
-        delay: 1,
-        repeat: Infinity,
-        
-      }}
-      >
-      </motion.div>
-      <motion.div 
-      className='circle'      
-      animate = {{
-        x: 1000,
-        rotate: 360
-      }}
-      >
-
-
-      </motion.div>
-
-      <motion.div className='box2'
-      drag
-      whileDrag={{
-        scale: 1.5
-      }}
-      dragConstraints={{
-         left: 0,
-         right: 1000,
-         top: 0,
-         bottom: 500
-      }}
-      whileHover={{
-        scale: 1.5,
-        backgroundColor: 'red'
-        }}
-      whileTap={{
-        scale: 0.5
-      }}
-      animate = {{
-        x: [0, 1000, 1000, 0 ,0]
-      
-      }}>
-
-
-      </motion.div>
-
-      <div className="card"></div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn mo lorem20
-        lorem20 lorem20
-        lorem impsum 
-      </p>
-
-
-    </>
-  )
+    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/explore" element={<MemeExplorer />} />
+        <Route path="/upload" element={<MemeUpload />} />
+        <Route path="/meme/:id" element={<MemeDetails />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
 }
-
-export default App
