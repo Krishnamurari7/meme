@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import React from "react";
 import HomePage from "./pages/HomePage";
-import MemeExplorer from "./pages/MemeExplorer";
+import MemeExplorer from "./pages/MemeExplore";
 import MemeUpload from "./pages/MemeUpload";
 import MemeDetails from "./pages/MemeDetails";
 import Profile from "./pages/Profile";
